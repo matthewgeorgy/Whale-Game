@@ -30,6 +30,8 @@ SDL_Texture *krill_texture;
 
 void render_game_and_collisions(SDL_Renderer *, Character *);
 
+void return_to_origin(Character*);
+
 void process_events(SDL_Window *, Character *, int *);
 
 SDL_bool check_collision(SDL_Rect *, SDL_Rect *);
@@ -181,65 +183,49 @@ void render_game_and_collisions(SDL_Renderer *renderer, Character *player)
 	// Collision detection
 	if (check_collision(&player_rect, &side_rect))
 	{
-		player->x = 50;
-		player->y = 10;
-		player->facing_right = 1;
-		SDL_Delay(50);
+		return_to_origin(player);
 	}
 	else if (check_collision(&player_rect, &border_rect))
 	{
-		player->x = 50;
-		player->y = 10;
-		player->facing_right = 1;
-		SDL_Delay(50);
+		return_to_origin(player);
 	}
 	else if (check_collision(&player_rect, &rod_1_rect))
 	{
-		player->x = 50;
-		player->y = 10;
-		player->facing_right = 1;
-		SDL_Delay(50);
+		return_to_origin(player);
 	}
 	else if (check_collision(&player_rect, &mine_1_rect))
 	{
-		player->x = 50;
-		player->y = 10;
-		player->facing_right = 1;
-		SDL_Delay(50);
+		return_to_origin(player);
 	}
 	else if (check_collision(&player_rect, &shark_L_rect))
 	{
-		player->x = 50;
-		player->y = 10;
-		player->facing_right = 1;
-		SDL_Delay(50);
+		return_to_origin(player);
 	}
 	else if (check_collision(&player_rect, &mine_2_rect))
 	{
-		player->x = 50;
-		player->y = 10;
-		player->facing_right = 1;
-		SDL_Delay(50);
+		return_to_origin(player);
 	}
 	else if (check_collision(&player_rect, &rod_2_rect))
 	{
-		player->x = 50;
-		player->y = 10;
-		player->facing_right = 1;
-		SDL_Delay(50);
+		return_to_origin(player);
 	}
 	else if (check_collision(&player_rect, &shark_R_rect))
 	{
-		player->x = 50;
-		player->y = 10;
-		player->facing_right = 1;
-		SDL_Delay(50);
+		return_to_origin(player);
 	}
 
 	else if (check_collision(&player_rect, &krill_rect))
 	{
 		player->won_game = 1;
 	}
+}
+
+void return_to_origin(Character *player)
+{
+	player->x = 50;
+	player->y = 10;
+	player->facing_right = 1;
+	SDL_Delay(50);
 }
 
 void process_events(SDL_Window *window, Character *player, int *p_running)
